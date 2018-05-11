@@ -2,7 +2,7 @@
 
 var should = require('chai').should();
 var proxyquire = require('proxyquire');
-var bitcore = require('bitcore-lib-dash');
+var bitcore = require('socialsendcore-lib');
 var sinon = require('sinon');
 var Service = require('../bitcorenode');
 
@@ -116,7 +116,7 @@ describe('Bitcore Node Service', function() {
       var service = new Service(options);
       var config = service._getConfiguration();
       config.blockchainExplorerOpts.livenet.should.deep.equal({
-        'apiPrefix': '/insight-api',
+        'apiPrefix': '/insight-api-socialsend',
         'provider': 'insight',
         'url': 'http://localhost:3001'
       });
@@ -131,7 +131,7 @@ describe('Bitcore Node Service', function() {
       var service = new Service(options);
       var config = service._getConfiguration();
       config.blockchainExplorerOpts.testnet.should.deep.equal({
-        'apiPrefix': '/insight-api',
+        'apiPrefix': '/insight-api-socialsend',
         'provider': 'insight',
         'url': 'http://localhost:3001'
       });

@@ -12,10 +12,10 @@ var tingodb = require('tingodb')({
   memStore: true
 });
 
-var Bitcore = require('bitcore-lib-dash');
+var Bitcore = require('socialsendcore-lib');
 var Bitcore_ = {
   btc: Bitcore,
-  bch: require('bitcore-lib-cash')
+  bch: require('socialsendcore-lib-cash')
 };
 
 var Common = require('../../lib/common');

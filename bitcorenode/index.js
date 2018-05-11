@@ -7,7 +7,7 @@ var https = require('https');
 var http = require('http');
 var async = require('async');
 var path = require('path');
-var bitcore = require('bitcore-lib-dash');
+var bitcore = require('socialsendcore-lib');
 var Networks = bitcore.Networks;
 var Locker = require('locker-server');
 var BlockchainMonitor = require('../lib/blockchainmonitor');
@@ -43,7 +43,7 @@ var Service = function(options) {
 
 util.inherits(Service, EventEmitter);
 
-Service.dependencies = ['insight-api-dash'];
+Service.dependencies = ['insight-api-socialsend'];
 
 /**
  * This method will read `key` and `cert` files from disk based on `httpsOptions` and
@@ -81,17 +81,17 @@ Service.prototype._getConfiguration = function() {
   var providerOptions = {
     provider: 'insight',
     url: (self.node.https ? 'https://' : 'http://') + 'localhost:' + self.node.port,
-    apiPrefix: '/insight-api'
+    apiPrefix: '/insight-api-socialsend'
   };
 
-  // A bitcore-node is either livenet or testnet, so we'll pass
+  // A socialsendcore-node is either livenet or testnet, so we'll pass
   // the configuration options to communicate via the local running
-  // instance of the insight-api service.
-  if (self.node.network === Networks.livenet) {
+  // instance of the insight-api-socialsend service.
+  if (self.node.network.name === Networks.livenet.name) {
     baseConfig.blockchainExplorerOpts = {
       livenet: providerOptions
     };
-  } else if (self.node.network === Networks.testnet) {
+  } else if (self.node.network.name === Networks.testnet.name) {
     baseConfig.blockchainExplorerOpts = {
       testnet: providerOptions
     };

@@ -7,8 +7,8 @@ See the configuration section to configure a different host/port.
 ### Install BWS from NPM
 Use the following steps to Install BWS from the npmjs repository and run it with defaults.
 ```bash
-npm install bitcore-wallet-service
-cd bitcore-wallet-service
+npm install socialsendcore-wallet-service
+cd socialsendcore-wallet-service
 ```
 To change configuration before running, see the Configuration section.
 ```bash
@@ -18,8 +18,8 @@ npm start
 ### Install BWS from github source
 Use the following steps to Install BWS from github source and run it with defaults.
 ```bash
-git clone https://github.com/bitpay/bitcore-wallet-service.git
-cd bitcore-wallet-service
+git clone https://github.com/bitpay/socialsendcore-wallet-service.git
+cd socialsendcore-wallet-service
 npm install
 ```
 To change configuration before running, see the Configuration section.
@@ -27,7 +27,7 @@ To change configuration before running, see the Configuration section.
 npm start
 ```
 ### Configuration
-Configuration for all required modules can be specified in https://github.com/bitpay/bitcore-wallet-service/blob/master/config.js
+Configuration for all required modules can be specified in https://github.com/bitpay/socialsendcore-wallet-service/blob/master/config.js
 
 BWS is composed of 5 separate node services -
 Locker - locker/locker.js
@@ -73,11 +73,11 @@ An example of this configuration is:
   blockchainExplorerOpts: {
     livenet: {
       provider: 'insight',
-      url: 'https://insight.bitpay.com:443',
+      url: 'https://insight.socialsend.io',
     },
     testnet: {
       provider: 'insight',
-      url: 'https://test-insight.bitpay.com:443',
+      url: 'https://tinsight.socialsend.io',
     },
   }
 ```
@@ -89,8 +89,8 @@ Example configuration for connecting to email service (using postfix):
     host: 'localhost',
     port: 25,
     ignoreTLS: true,
-    subjectPrefix: '[Wallet Service]',
-    from: 'wallet-service@bitcore.io',
+    subjectPrefix: '[Wallet Service SocialSend]',
+    from: 'wallet@socialsend.io',
   }
 ```
 

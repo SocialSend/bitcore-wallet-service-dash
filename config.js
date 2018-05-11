@@ -1,7 +1,7 @@
 var config = {
   basePath: '/bws/api',
   disableLogs: false,
-  port: process.env.BWS_PORT ||  3232,
+  port: 3232,
 
   // Uncomment to make BWS a forking server
   // cluster: true,
@@ -21,46 +21,43 @@ var config = {
 
   storageOpts: {
     mongoDb: {
-      uri: process.env.MONGODB_URI || 'mongodb://localhost:27017/bws',
+      uri: 'mongodb://localhost:27017/bws',
     },
   },
   lockOpts: {
     //  To use locker-server, uncomment this:
     lockerServer: {
-      host: process.env.LOCKER_SERVER ||  'localhost',
-      port: process.env.LOCKER_SERVER_PORT || 3231,
+      host: 'localhost',
+      port: 3231,
     },
   },
   messageBrokerOpts: {
     //  To use message broker server, uncomment this:
     messageBrokerServer: {
-      url: process.env.MESSAGEBROKER_URI || 'http://localhost:3380',
+      url: 'http://localhost:3380',
     },
   },
   blockchainExplorerOpts: {
-    btc: {
+    send: {
       livenet: {
         provider: 'insight',
-        url: 'https://insight.dashevo.org:443',
-        apiPrefix:'/insight-api-dash'
+        url: 'https://insight.socialsend.io',
+        apiPrefix:'/insight-api-socialsend'
       },
       testnet: {
         provider: 'insight',
-        url: 'https://testnet-insight.dashevo.org:443',
-        apiPrefix:'/insight-api-dash'
-        // url: 'http://localhost:3001',
-        // Multiple servers (in priority order)
-        // url: ['http://a.b.c', 'https://test-insight.bitpay.com:443'],
+        url: 'https://tinsight.socialsend.io',
+        apiPrefix:'/insight-api-socialsend'
       },
     }
   },
   pushNotificationsOpts: {
     templatePath: './lib/templates',
     defaultLanguage: 'en',
-    defaultUnit: 'btc',
+    defaultUnit: 'send',
     subjectPrefix: '',
     pushServerUrl: 'https://fcm.googleapis.com/fcm',
-    authorizationKey: process.env.PUSH_AUTHORIZATIONKEY || '',
+    authorizationKey: '',
   },
   fiatRateServiceOpts: {
     defaultProvider: 'BitPay',
@@ -75,7 +72,7 @@ var config = {
   //  from: 'wallet-service@bitcore.io',
   //  templatePath: './lib/templates',
   //  defaultLanguage: 'en',
-  //  defaultUnit: 'btc',
+  //  defaultUnit: 'send',
   //  publicTxUrlTemplate: {
   //    livenet: 'https://insight.bitpay.com/tx/{{txid}}',
   //    testnet: 'https://test-insight.bitpay.com/tx/{{txid}}',
